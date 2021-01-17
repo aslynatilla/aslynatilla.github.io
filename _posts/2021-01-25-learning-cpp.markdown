@@ -1,0 +1,104 @@
+---
+layout: post
+date: 2021-01-25 00:00:00 -0000
+tags: c++, learning, talk, videos
+excerpt_separator: <!--excerpt-->
+title: "Learning C++: useful resources"
+---
+
+I've been thinking about creating a blog where I could register thoughts and things I learn during my experience as a programmer for a long time. Always waiting for a better occasion, I started piling up some resources I found helpful in the last year. "Eventually, I'll post them somewhere". 
+In the last weeks, inspired by a thread on Twitter and some answers, I decided it was time to start and try this out.
+
+This post tries to informally list some good resources, so that beginners and people coming back to C++ after a pause can find some _pointers_ guiding them. 
+
+Hopefully, this will help someone!
+<!--excerpt-->
+
+## Learning C++: useful resources
+##### (according to a clueless computer science student)
+
+For context, 2020 was the year I decided to "get back" at C++ after a negative experience with it in my first years of university. Probably, I never searched hard enough for good resources; maybe, I was scared by the reputation the language has. In hindsight, I wasn't looking in the right direction for sure. I have heard that the good resources available to anyone greatly increased in the last years too.  
+
+When I started searching, I was pretty surprised to see there were *so many*. 
+Selecting good ones and avoiding misleading ones can be tough too, especially for a beginner.
+I admit I was lucky in meeting very good ones at my first shot.
+
+In my experience, when talking to other students about C++, what frequently comes up is pointers, references, object, classes, memory management and... how scary they can all be.
+Until last year, I was pretty confused about all these concepts dancing around in my memory. "What's a pointer?", "what's a reference?", "should I sprinkle `new` whenever I create an object?" and so on.
+
+First things first, then. I'd definitely recommend to approach C++ basics before exploring the rest of the language. Where to start? I can recommend binge-watching Kate Gregory's courses including:
+* [C++ Fundamentals including C++17](https://www.pluralsight.com/courses/cplusplus-fundamentals-c17)
+* [Learn to program with C++](https://www.pluralsight.com/courses/learn-program-cplusplus)
+
+They are clear, concise and promote good practices, which is something you want to assimilate as soon as possible from people proficient with this language. 
+*Follow those practices*, they'll spare you headaches and a lot of debugging time.
+
+Another series of videos I appreciated in my learning process was [Yan "TheCherno" Chernikov's series about C++](https://youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb). I would recommend watching this following their release dates: even if they are not structured as Kate Gregory's courses because of Youtube's nature, they guide you through concepts from simpler ones to more advanced ones, with plenty of examples and curious notes.
+
+If you are looking for a welcoming, inclusive community that can help you through your learning process, you should definitely look at [#include<c++>](https://www.includecpp.org/discord/) and their Discord server.
+There are lots of ideas, interesting cues on where to look, experienced people and others learning the language. Also note that the site has [a page with other valuable resources](https://www.includecpp.org/resources/references/) which you may want to look at.
+
+Once you are done exploring the fundamentals and the basics of C++, you may want to delve into a specific feature that made you curious. Here's some talks I found interesting; these helped me understanding some concepts better and I found even more _value_ by watching them more than once.
+
+* [Back to Basics: Understanding Value Categories](https://youtu.be/XS2JddPq7GQ) by Ben Saks can give you an overview on values, pointers, references and move semantics.
+* [Back to Basics: Move Semantics (part 1)](https://youtu.be/St0MNEU5b0o) and [part 2](https://youtu.be/pIzaZbKUw2s) by Klaus Iglberger guides you in discovering move semantics and its details... and there are pretty puppies.
+* You may think about C++ and object-oriented programming could come up to your mind: [Back to Basics: OOP](https://youtu.be/32tDTD9UJCE) by Jon Kalb can give you an overview on the syntax of C++ involving classes, inheritance and other OOP concepts.
+* Once you know about classes and objects in C++, Arthur O’Dwyer can help you understand a powerful concept, *Resource Acquisition Is Initialization* (or RAII), and suggest you some good practices about how you can write your own classes; watch [Back to Basics: RAII and the Rule of Zero](https://youtu.be/7Qgd9B1KuMQ) for this.
+* Since we were talking about RAII, [Back to Basics: Smart Pointers](https://youtu.be/xGDLkt-jBJ4) can offer an example of RAII and explain to you which kind of carefully designed tools you can find in the standard library.
+* C++11 introduced *lambdas* in the language; [Back to Basics: Lambdas from Scratch](https://youtu.be/3jCOwajNch0) explores this feature and teaches you how it works and how you can use it. Lambdas can make your code more readable, help you with refactoring and expressing intent. Little spoiler about them: the last standards make them even more powerful, adding features here and there, so... you want to watch this.
+* You loved *smart pointers* and you want to know more about the STL? [Back to Basics: Algebraic Data Types](https://youtu.be/OJzmWqCCZaM) presents you `std::variant`, `std::optional`, `std::any` together with tuples and pairs; Arthur O'Dwyer will explain some idiomatic ways to use them and how you can use these tools.
+* Another feature C++ is associated with is *templates*. Here's Dan Saks and [Back to Basics: Function and Class Templates](https://youtu.be/LMP_sxOaz6g).
+
+Once you are done with these, you may have different questions about other details of some features; you may want to know more about standards and what's different about each of them (and why they are important); you may want to discover even more about the standard library.
+That's great, and... I have some more suggestions for you. 
+
+While you are exploring all of these concepts, you may want to try and write some code, test some features, practice your understanding of the last technique you have heard about. Matt Godbolt offers you [Compiler Explorer](https://godbolt.org/), where you can write C++ code, compile it with different compilers, make it run and even share it. 
+If you have an idea and you need to test it on the fly, or you have some code you want to share while asking questions, you should use Compiler Explorer.
+
+An important note about asking for coding help is in [this article from Kate Gregory](http://www.gregcons.com/KateBlog/HowToAskForCCodingHelp.aspx). I won't spoil it for you, but I believe this contains both plain truth and good observations and it will help you growing as a programmer.
+
+If you need clarifications about a feature of the language, a part of the standard library, how a class or a function works or what is in that particular header you saw some people including on top of their code... You want to search on [CppReference](https://en.cppreference.com/w/). This is what was recommended to me, and what I saw people much more qualified than me recommending. It might take you a while to get acquainted to navigating its sections and reading some descriptions, but it is definitely worth the effort.
+
+We also referred to best practices that you want to adopt while coding. There are places that collect many guidelines ordered by topic, feature or concept.
+
+* [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines) by Bjarne Stroustrup and Herb Sutter
+* Jason 'lefticus' Turner's [cppbestpractices repository](https://github.com/lefticus/cppbestpractices)
+
+You may also want to look at [C++ FAQ](https://isocpp.org/wiki/faq)s.
+If you prefer watching talks over reading, I may recommend:
+* [C++ Code Smells](https://youtu.be/nqfgOCU_Do4) and [Applied Best Practices](https://youtu.be/DHOlsEd0eDE) by Jason Turner
+* [10 Core Guidelines you need to start using now](https://youtu.be/XkDEzfpdcSg) and [Naming is hard: let's do better](https://youtu.be/MBRoCdtZOYg) by Kate Gregory 
+
+About exploring what is in each standard, I have to point at [C++ Weekly with Jason Turner](https://www.youtube.com/user/lefticus1), a wonderful collection of videos about C++ features, from basics to more advanced ones. The following videos sum up the most notable additions to each standard with some examples:
+* [C++98](https://youtu.be/78Y_LRZPVRg)
+* [C++11](https://youtu.be/D5n6xMUKU3A)
+* [C++14](https://youtu.be/mXxNvaEdNHI)
+* [C++17](https://youtu.be/QpFjOlzg1r4)
+
+The "show-and-tell" worked great for me. Also, Jason <i>const</i>antly encourages following best practices, which is another good reason to watch his content... _weekly_.
+
+For a deeper dive in C++17, I can recommend both [Practical C++17](https://youtu.be/nnY4e4faNp0) by Jason Turner and [C++17 Features (part 1)](https://youtu.be/fI2xiUqqH3Q) and [(part 2)](https://youtu.be/qjxBKINAWk0) by Bryce Adelstein Lelbach.
+
+_(We are almost done, I promise.)_
+
+Another recommendation I feel I should make is using the Standard Library, its tools and its commodities. They are there to be used and they will definitely help you, if you learn how they work.
+Iterators and algorithms are what you want to study to get better at conveying intent while being efficient and avoiding to re-invent the wheel. Three talks that hugely motivated me looking into those are:
+
+* [C++ Seasoning](https://youtu.be/W2tWOdzgXHA) by Sean Parent, a renowned talk in the C++ community; you want to understand what `std::rotate` is and you will know after this one. There's nothing more I could say about this, so... go and watch it!
+* [Algorithm Intuition](https://youtu.be/48gV1SNm3WA) by Conor Hoekstra; I loved this talk and Conor's enthusiasm is what motivated me to get better at using algorithms, exploring the `<algorithm>` header and how I could use it more and more in my projects as a student.
+* [105 Algorithms in less than an hour](https://youtu.be/2olsGf6JIkU) by Jonathan Boccara, literally *mapping* those algorithms both on screen and in your mind, helping you group them through logic and semantic affinity. 
+
+If you want to learn using them with a smoother learning curve and someone illustrating them to you step by step, I have to recommend you another one of Kate Gregory's courses, [Beautiful C++: STL Algorithms](https://app.pluralsight.com/library/courses/beautiful-cplusplus-stl-algorithms/table-of-contents): through presentations and hands-on examples, Kate explains how you can remember them, what some of those have in common and how easy it can be using them and taking advantage of their properties. 
+
+For even more _pointers_ to useful content, Lesley Lai recently wrote a post about [Resources that help you delve into C++](https://lesleylai.info/en/delve_into_cpp), that inspired mine and that I recommend going through; Lesley definitely has more insight than me on the topic. 
+
+### Out we go...
+That was surely a lot, huh? That's something that you should not be scared of, in my humble opinion. Those are mostly - if not all - free resources available to anyone that wants to approach C++ and learn more about it, and coding in general.
+I am a clueless computer science student, but I feel like I learned a lot in the past year. 
+If I got better at coding and at reasoning about code, even slightly, I owe it to those resources, those people giving talks and the others working hard to enriching the community by sharing their knowledge and helping beginners and newcomers.
+
+With my first blog post, I want to publicly thank them and hopefully help someone else, as they helped me.
+
+Any constructive criticism, correction, note or comment about the post is welcome. Feel free to contact me on [Twitter](https://twitter.com/antonio_sly).
+
+See you all in my next clueless post!
