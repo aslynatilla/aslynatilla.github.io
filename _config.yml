@@ -22,8 +22,8 @@ title: A Sly Blog
 email: antonio.natilla30@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   a blog of a clueless computer science student learning stuff
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://aslynatilla.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Antonio_Sly
 github_username:  aslynatila
 
@@ -51,5 +51,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-###### DEBUG
-future: true
