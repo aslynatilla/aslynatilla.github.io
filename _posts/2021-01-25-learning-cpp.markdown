@@ -14,8 +14,8 @@ This post tries to informally list some good resources, so that beginners and pe
 Hopefully, this will help someone!
 <!--excerpt-->
 
-## Learning C++: useful resources
-##### (according to a clueless computer science student)
+<h2 class="header-common-style"> Learning C++: useful resources</h2>
+<p class="little-note">(according to a clueless computer science student)</p>
 
 For context, 2020 was the year I decided to "get back" at C++ after a negative experience with it in my first years of university. Probably, I never searched hard enough for good resources; maybe, I was scared by the reputation the language has. In hindsight, I wasn't looking in the right direction for sure. I have heard that the good resources available to anyone greatly increased in the last years too.  
 
@@ -92,7 +92,7 @@ If you want to learn using them with a smoother learning curve and someone illus
 
 For even more _pointers_ to useful content, Lesley Lai recently wrote a post about [Resources that help you delve into C++](https://lesleylai.info/en/delve_into_cpp), that inspired mine and that I recommend going through; Lesley definitely has more insight than me on the topic. 
 
-### Out we go...
+<h2 class="header-common-style">Out we go...</h2>
 That was surely a lot, huh? That's something that you should not be scared of, in my humble opinion. Those are mostly - if not all - free resources available to anyone that wants to approach C++ and learn more about it, and coding in general.
 I am a clueless computer science student, but I feel like I learned a lot in the past year. 
 If I got better at coding and at reasoning about code, even slightly, I owe it to those resources, those people giving talks and the others working hard to enriching the community by sharing their knowledge and helping beginners and newcomers.
