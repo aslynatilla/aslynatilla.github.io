@@ -13,6 +13,8 @@ test.md
 /node_modules
 /.pnp
 .pnp.js
+# ADDED MANUALLY
+package-lock.json
 
 # testing
 /coverage
