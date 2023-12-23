@@ -5,7 +5,7 @@ export default function TextParagraph({
 	classes,
 }: { text: string; classes: string }) {
 	return (
-		<div className={"m-0 text-sm leading-tight whitespace-pre-wrap " + classes}>
+		<div className={`m-0 text-sm leading-tight whitespace-pre-wrap ${classes}`}>
 			{paragraph_text}
 		</div>
 	);
