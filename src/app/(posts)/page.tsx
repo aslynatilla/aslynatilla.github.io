@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
-import TextParagraph from "./components/text_paragraph";
+import TextParagraph from "@/app/components/text_paragraph";
+import Link from "next/link";
 
 function get_post_files(posts_directory = "_posts"): string[] {
 	return readdirSync(posts_directory).map((filename) =>
@@ -74,17 +75,18 @@ export default async function Home() {
 	const processed_files = files.map(get_title_and_excerpt);
 
 	return (
-		<>
-			<div className="flex flex-col items-center">
-				<div className="z-10 max-w-5xl w-full items-center justify-between text-3xl lg:flex">
-					<p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-400 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-						# Latest posts
-					</p>
-				</div>
-				<div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-rows-4 lg:text-left">
-					{processed_files.map(([title, content]: [string, string]) => {
+		<div className="flex flex-col items-center">
+			<div className="z-10 max-w-5xl w-full items-center justify-between text-3xl lg:flex">
+				<p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-400 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+					# Latest posts
+				</p>
+			</div>
+			<div className="flex flex-cols text-center max-h-max lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
+				{processed_files.map(
+					([title, content]: [string, string], index: number) => {
 						return (
 							<a
+								key={`${title}-${index}-post`}
 								href="."
 								className="group 
 						rounded-lg border border-transparent px-5 py-4 
@@ -110,9 +112,9 @@ export default async function Home() {
 								/>
 							</a>
 						);
-					})}
-				</div>
+					},
+				)}
 			</div>
-		</>
+		</div>
 	);
 }
