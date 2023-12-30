@@ -1,3 +1,5 @@
+import { RedirectType } from "next/dist/client/components/redirect";
+
 export async function generateStaticParams() {
 	return new Array(5).fill(null).map((_, index) => ({
 		postPages: index,

@@ -23,7 +23,12 @@ export default function PageNavigator({
 				const link_target = `/${index}`;
 
 				const navigate_to_target = () => {
-					router.push(`/${index}`, { scroll: false });
+					console.log(typeof index);
+					if (index === 0) {
+						router.push("/", { scroll: false });
+					} else {
+						router.push(`/${index}`, { scroll: false });
+					}
 				};
 
 				return (
