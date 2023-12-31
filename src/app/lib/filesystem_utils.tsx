@@ -1,5 +1,5 @@
-import { readdirSync, readFileSync } from "fs";
-import { join } from "path";
+import { readdirSync, readFileSync, Dirent } from "fs";
+import { ParsedPath, join, parse } from "path";
 
 export function get_post_files(posts_directory = "_posts"): string[] {
 	return readdirSync(posts_directory).map((filename) =>
@@ -65,4 +65,22 @@ export function get_title_and_excerpt(filename: string): [string, string] {
 	};
 
 	return [find_title(), find_excerpt()];
+}
+
+export function get_posts(): string[] {
+	const entries: Dirent[] = readdirSync("src/app/(posts)", {
+		withFileTypes: true,
+		recursive: true,
+	});
+
+	const POST_EXTENSION = ".mdx";
+	const posts: [string, ParsedPath][] = entries
+		.filter((entry: Dirent) => entry.isFile())
+		.map((entry): [string, ParsedPath] => [entry.path, parse(entry.path)])
+		.filter(
+			([path, descr]: [string, ParsedPath]) =>
+				descr.ext.toLowerCase() === POST_EXTENSION,
+		);
+
+	return posts.map(([path, descr]: [string, ParsedPath]) => path);
 }
