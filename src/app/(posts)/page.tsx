@@ -5,6 +5,8 @@ import {
 	get_title_and_excerpt,
 } from "@/app/lib/filesystem_utils";
 
+export const dynamic = "force-static";
+
 export default async function Home() {
 	const files = get_post_files();
 	console.debug(files);

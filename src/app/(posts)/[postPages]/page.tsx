@@ -1,9 +1,12 @@
-import { RedirectType } from "next/dist/client/components/redirect";
+import { get_posts } from "@/app/lib/filesystem_utils";
 
-export async function generateStaticParams() {
-	return new Array(5).fill(null).map((_, index) => ({
-		postPages: index,
+export const dynamic = "force-static";
+
+export function generateStaticParams(): { postPages: string }[] {
+	const params = new Array(5).fill(null).map((_, index) => ({
+		postPages: `${index}`,
 	}));
+	return params;
 }
 
 export default function Page({ params }: { params: { postPages: string } }) {

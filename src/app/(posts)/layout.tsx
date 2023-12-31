@@ -5,6 +5,8 @@ import PageNavigator from "@/app/components/page_navigator";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
 	title: "A Sly Blog",
 	description:
@@ -13,10 +15,11 @@ export const metadata: Metadata = {
 
 export default function Layout(props: {
 	children?: React.ReactNode;
-	list?: React.ReactNode;
+	list: React.ReactNode;
 }) {
 	const NUMBER_OF_PAGES = 5;
 	const main_classes = "flex flex-col justify-between p-24 h-screen";
+	// console.log(props.children);
 	return (
 		<>
 			<html lang="en">
@@ -25,7 +28,8 @@ export default function Layout(props: {
 						{/* {props.children !== null &&
 							props.children !== undefined &&
 							props.children} */}
-						{props.list ?? null}
+						{props.children}
+						{/* {props.list ?? null} */}
 						<PageNavigator page_number={NUMBER_OF_PAGES} />
 					</main>
 				</body>
