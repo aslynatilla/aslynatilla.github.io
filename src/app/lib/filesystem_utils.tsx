@@ -79,15 +79,17 @@ export function get_posts(): string[] {
 		withFileTypes: true,
 		recursive: true,
 	});
-
 	const POST_EXTENSION = ".mdx";
 	const posts: [string, ParsedPath][] = entries
 		.filter((entry: Dirent) => entry.isFile())
-		.map((entry): [string, ParsedPath] => [entry.path, parse(entry.path)])
+		.map((entry): [string, ParsedPath] => {
+			const joined_path = join(entry.path, entry.name);
+			return [joined_path, parse(joined_path)];
+		})
 		.filter(
-			([path, descr]: [string, ParsedPath]) =>
+			([whole_path, descr]: [string, ParsedPath]) =>
 				descr.ext.toLowerCase() === POST_EXTENSION,
 		);
 
-	return posts.map(([path, descr]: [string, ParsedPath]) => path);
+	return posts.map(([whole_path, descr]: [string, ParsedPath]) => whole_path);
 }
