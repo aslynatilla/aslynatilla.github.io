@@ -2,9 +2,16 @@ import { readdirSync, readFileSync, Dirent } from "fs";
 import { ParsedPath, join, parse } from "path";
 
 export function get_post_files(posts_directory = "_posts"): string[] {
-	return readdirSync(posts_directory).map((filename) =>
-		join(posts_directory, filename),
-	);
+	try {
+		return readdirSync(posts_directory).map((filename) =>
+			join(posts_directory, filename),
+		);
+	} catch (error) {
+		console.warn(
+			`Error while reading posts' directory: ${posts_directory}\nError caught:\t${error}`,
+		);
+		return [];
+	}
 }
 
 export function get_title_and_excerpt(filename: string): [string, string] {

@@ -19,17 +19,13 @@ export default function Layout(props: {
 }) {
 	const NUMBER_OF_PAGES = 5;
 	const main_classes = "flex flex-col justify-between p-24 h-screen";
-	// console.log(props.children);
 	return (
 		<>
 			<html lang="en">
 				<body className={inter.className}>
 					<main className={main_classes}>
-						{/* {props.children !== null &&
-							props.children !== undefined &&
-							props.children} */}
 						{props.children}
-						{/* {props.list ?? null} */}
+						{props.list}
 						<PageNavigator page_number={NUMBER_OF_PAGES} />
 					</main>
 				</body>
