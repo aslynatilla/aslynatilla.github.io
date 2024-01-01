@@ -1,48 +1,43 @@
 "use client";
 
-import {
-	useRouter,
-	useSelectedLayoutSegment,
-	useSelectedLayoutSegments,
-} from "next/navigation";
+import { useRouter } from "next/navigation";
 
-import { ReturnToHomePageButton } from "./ReturnToHomePageButton";
+import { ReturnToHomePageButton } from "@/app/components/ReturnToHomePageButton";
 
 export default function PageNavigator({
-	page_number,
-}: {
-	page_number: number;
-}) {
+	number_of_pages,
+}: { number_of_pages: number }) {
 	const router = useRouter();
 	const button_classes =
 		"rounded-md p-2 m-2 ring-1 ring-white hover:bg-[#ffcc00] hover:text-extrabold hover:text-gray-950";
 
+	const pages_other_than_latest_posts = number_of_pages - 1;
+
 	return (
 		<div className="flex flex-row justify-center">
-			{new Array(page_number).fill(null).map((_, index: number) => {
-				const link_target = `/${index}`;
-
-				const navigate_to_target = () => {
-					if (index === 0) {
-						router.push("/", { scroll: false });
-					} else {
-						router.push(`/${index}`, { scroll: false });
-					}
-				};
-
-				return (
-					<button
-						key={`page-navigator-button-${index}`}
-						type={"button"}
-						className={button_classes}
-						onClick={() => navigate_to_target()}
-					>
-						{index + 1}
-					</button>
-				);
-			})}
-
 			<ReturnToHomePageButton classes={button_classes} />
+
+			{new Array(pages_other_than_latest_posts)
+				.fill(null)
+				.map((_, index: number) => {
+					const human_index = index + 1;
+					const link_target = `/${human_index}`;
+
+					const navigate_to_target = () => {
+						router.push(link_target, { scroll: false });
+					};
+
+					return (
+						<button
+							key={`page-navigator-button-${human_index}`}
+							type={"button"}
+							className={button_classes}
+							onClick={() => navigate_to_target()}
+						>
+							{human_index}
+						</button>
+					);
+				})}
 		</div>
 	);
 }

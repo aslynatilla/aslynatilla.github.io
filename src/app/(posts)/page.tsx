@@ -9,7 +9,6 @@ export const dynamic = "force-static";
 
 export default async function Home() {
 	const files = get_post_files();
-	console.debug(files);
 	const processed_files = files.map(get_title_and_excerpt);
 
 	return (
