@@ -1,5 +1,9 @@
-import PageContent from "./content.mdx";
+import * as Content from "./content.mdx";
 
-export default function LearningCpp() {
-	return <PageContent />;
+export function data() {
+	return Content.metadata;
+}
+
+export function page() {
+	return <Content.default />;
 }
