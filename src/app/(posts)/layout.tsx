@@ -18,7 +18,6 @@ export const metadata: Metadata = {
 export default function Layout(props: {
 	children?: React.ReactNode;
 }) {
-	const NUMBER_OF_PAGES = 5;
 	const main_classes = "flex flex-col justify-between p-24 h-screen";
 	return (
 		<>
