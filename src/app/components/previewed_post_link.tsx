@@ -1,10 +1,18 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
+import {
+	MDXRemote,
+	compileMDX,
+	type CompileMDXResult,
+} from "next-mdx-remote/rsc";
+import Link from "next/link";
 
-export default function PreviewedPostLink(props) {
+export default function PreviewedPostLink(props: {
+	title: string;
+	excerpt_source: CompileMDXResult<Record<string, unknown>>;
+}) {
 	return (
 		<div>
-			<div>{props.frontmatter.title}</div>
-			<MDXRemote {...props.frontmatter.excerpt} />
+			<Link href={"/post/2021-01-25/learning-cpp"}>{props.title}</Link>
+			{props.excerpt_source.content}
 		</div>
 	);
 }

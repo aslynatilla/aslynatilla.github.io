@@ -2,7 +2,7 @@ import { get_posts } from "@/app/lib/filesystem_utils";
 import { POST_PREVIEW_PER_PAGE } from "@/app/lib/posts_utils";
 import { parse, sep as path_separator } from "path";
 import { readFileSync } from "fs";
-import { serialize } from "next-mdx-remote/serialize";
+import { compileMDX } from "next-mdx-remote/rsc";
 import PreviewedPostLink from "@/app/components/previewed_post_link";
 
 export const dynamic = "force-static";
@@ -32,17 +32,18 @@ export default function Home() {
 		const page_file = { ...content_file, base: "page" };
 
 		const path = `${page_file.dir}${path_separator}content.mdx`;
-		const m = readFileSync(path, "utf-8");
+		const file_as_str = readFileSync(path, "utf-8");
 
-		const source = await serialize(m, {
-			parseFrontmatter: true,
-		});
+		const { content, frontmatter } = await compileMDX<{
+			date: string;
+			title: string;
+			excerpt: string;
+		}>({ source: file_as_str, options: { parseFrontmatter: true } });
 
-		source.frontmatter.excerpt = await serialize(
-			source.frontmatter.excerpt as string,
-		);
+		const excerpt_source = await compileMDX({ source: frontmatter.excerpt });
+		const props = { title: frontmatter.title, excerpt_source };
 
-		return <PreviewedPostLink {...source} />;
+		return <PreviewedPostLink {...props} />;
 	};
 
 	return (
