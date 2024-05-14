@@ -2,7 +2,7 @@ import "server-only";
 import { readdirSync, readFileSync, Dirent } from "fs";
 import { ParsedPath, join, parse } from "path";
 
-export const POST_REPOSITORY = "public/posts/";
+export const POST_REPOSITORY: string = "public/posts/";
 
 export function get_post_files(posts_directory = "_posts"): string[] {
 	try {

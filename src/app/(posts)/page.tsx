@@ -4,6 +4,7 @@ import { parse, sep as path_separator } from "path";
 import { readFileSync } from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import PreviewedPostLink from "@/app/components/previewed_post_link";
+import { PostFrontmatter } from "@/model/post";
 
 export const dynamic = "force-static";
 
@@ -34,11 +35,10 @@ export default function Home() {
 		const path = `${page_file.dir}${path_separator}content.mdx`;
 		const file_as_str = readFileSync(path, "utf-8");
 
-		const { content, frontmatter } = await compileMDX<{
-			date: string;
-			title: string;
-			excerpt: string;
-		}>({ source: file_as_str, options: { parseFrontmatter: true } });
+		const { content, frontmatter } = await compileMDX<PostFrontmatter>({
+			source: file_as_str,
+			options: { parseFrontmatter: true },
+		});
 
 		const excerpt_source = await compileMDX({ source: frontmatter.excerpt });
 		const props = { title: frontmatter.title, excerpt_source };
