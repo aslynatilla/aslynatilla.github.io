@@ -20,6 +20,24 @@ function LastPostsHeader({
 	);
 }
 
+const make_previewed_post_link = async (path_to_post: string) => {
+	const content_file = parse(path_to_post);
+	const page_file = { ...content_file, base: "page" };
+
+	const path = `${page_file.dir}${path_separator}content.mdx`;
+	const file_as_str = readFileSync(path, "utf-8");
+
+	const { content, frontmatter } = await compileMDX<PostFrontmatter>({
+		source: file_as_str,
+		options: { parseFrontmatter: true },
+	});
+
+	const excerpt_source = await compileMDX({ source: frontmatter.excerpt });
+	const props = { title: frontmatter.title, excerpt_source };
+
+	return <PreviewedPostLink {...props} />;
+};
+
 export default function Home() {
 	const posts = get_posts();
 
@@ -28,31 +46,13 @@ export default function Home() {
 	const POSTS_LIST_CONTAINER_CLASSES =
 		"flex flex-col text-center max-h-max lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left gap-y-4";
 
-	const mapper = async (path_to_post: string) => {
-		const content_file = parse(path_to_post);
-		const page_file = { ...content_file, base: "page" };
-
-		const path = `${page_file.dir}${path_separator}content.mdx`;
-		const file_as_str = readFileSync(path, "utf-8");
-
-		const { content, frontmatter } = await compileMDX<PostFrontmatter>({
-			source: file_as_str,
-			options: { parseFrontmatter: true },
-		});
-
-		const excerpt_source = await compileMDX({ source: frontmatter.excerpt });
-		const props = { title: frontmatter.title, excerpt_source };
-
-		return <PreviewedPostLink {...props} />;
-	};
-
 	return (
 		<div className="flex flex-col items-center">
 			<LastPostsHeader header_block_classes={POSTS_HEADER_CLASSES} />
 			<div className={POSTS_LIST_CONTAINER_CLASSES}>
 				{posts
 					.filter((_, index: number) => index < POST_PREVIEW_PER_PAGE)
-					.map(mapper)}
+					.map(make_previewed_post_link)}
 			</div>
 		</div>
 	);

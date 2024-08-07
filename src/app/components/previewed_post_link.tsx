@@ -11,7 +11,9 @@ export default function PreviewedPostLink(props: {
 }) {
 	return (
 		<div>
-			<Link href={"/post/2021-01-25/learning-cpp"}>{props.title}</Link>
+			<Link href={"/post/2021-01-25/learning-cpp"} className="text-yellow-300">
+				{props.title}
+			</Link>
 			{props.excerpt_source.content}
 		</div>
 	);
