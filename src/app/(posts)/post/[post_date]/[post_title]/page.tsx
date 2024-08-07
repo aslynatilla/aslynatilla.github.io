@@ -13,6 +13,9 @@ import { join } from "path";
 
 // TEMPORARILY
 import TextParagraph from "@/app/components/text_paragraph";
+import TitleContainer from "@/app/components/TitleContainer";
+import FirstLevelHeader from "@/app/components/FirstLevelHeader";
+import RemarkOnHeader from "@/app/components/RemarkOnHeader";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -106,6 +109,10 @@ export default async function Page({
 				}
 				return <h2 className={h2_classes}>{children}</h2>;
 			},
+
+			TitleContainer: TitleContainer,
+			FirstLevelHeader: FirstLevelHeader,
+			RemarkOnHeader: RemarkOnHeader,
 		},
 	});
 
