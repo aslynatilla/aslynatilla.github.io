@@ -2,6 +2,7 @@ import { get_posts } from "@/app/lib/filesystem_utils";
 import { get_post_pages_amount } from "@/app/lib/posts_utils";
 
 export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export function generateStaticParams(): { postPages: string }[] {
 	const posts = get_posts();
