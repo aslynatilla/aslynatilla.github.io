@@ -17,16 +17,17 @@ import TitleContainer from "@/app/components/TitleContainer";
 import FirstLevelHeader from "@/app/components/FirstLevelHeader";
 import RemarkOnHeader from "@/app/components/RemarkOnHeader";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
+// export const dynamic = "force-static";
+// export const dynamicParams = false;
 
 type PostStaticParams = {
 	post_date: string;
 	post_title: string;
 };
 
+// export async function generateStaticParams() {
 export function generateStaticParams() {
-	const posts = get_posts();
+	// const posts = get_posts();
 
 	// const results = await Promise.allSettled(
 	// 	posts
