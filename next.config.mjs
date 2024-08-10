@@ -6,7 +6,6 @@ const nextConfig = {
 	// https://nextjs.org/docs/app/building-your-application/deploying/static-exports
 	// `distDir` allows to specify the output directory of the static deployment.
 	output: "export",
-	basePath: "/aslynatilla.github.io",
 	distDir: "./out",
 	images: {
 		unoptimized: true,
