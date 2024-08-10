@@ -24,4 +24,17 @@ body {
   background: linear-gradient(to bottom,
       var(--background-start-rgb),
       var(--background-end-rgb));
+
+  /*
+
+    CSS dark magic for avoiding the gradient 
+    getting tiled in the background 
+  
+    https://stackoverflow.com/a/39344724 
+    
+  */
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

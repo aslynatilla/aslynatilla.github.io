@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 import { get_post_pages_amount } from "@/app/lib/posts_utils";
 import PageNavigator from "@/app/components/page_navigator";
+import { get_posts } from "@/app/lib/filesystem_utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
 export default function Layout(props: {
 	children?: React.ReactNode;
 }) {
-	const NUMBER_OF_PAGES = 5;
 	const main_classes = "flex flex-col justify-between p-24 h-screen";
 	return (
 		<>
@@ -26,7 +26,9 @@ export default function Layout(props: {
 				<body className={inter.className}>
 					<main className={main_classes}>
 						{props.children}
-						<PageNavigator number_of_pages={get_post_pages_amount()} />
+						<PageNavigator
+							number_of_pages={get_post_pages_amount(get_posts())}
+						/>
 					</main>
 				</body>
 			</html>

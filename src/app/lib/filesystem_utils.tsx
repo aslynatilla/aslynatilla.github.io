@@ -1,5 +1,8 @@
+import "server-only";
 import { readdirSync, readFileSync, Dirent } from "fs";
 import { ParsedPath, join, parse } from "path";
+
+export const POST_REPOSITORY: string = "public/posts/";
 
 export function get_post_files(posts_directory = "_posts"): string[] {
 	try {
@@ -75,7 +78,7 @@ export function get_title_and_excerpt(filename: string): [string, string] {
 }
 
 export function get_posts(): string[] {
-	const entries: Dirent[] = readdirSync("src/app/(posts)", {
+	const entries: Dirent[] = readdirSync(POST_REPOSITORY, {
 		withFileTypes: true,
 		recursive: true,
 	});
@@ -87,9 +90,12 @@ export function get_posts(): string[] {
 			return [joined_path, parse(joined_path)];
 		})
 		.filter(
-			([whole_path, descr]: [string, ParsedPath]) =>
-				descr.ext.toLowerCase() === POST_EXTENSION,
+			([_, descriptor]: [string, ParsedPath]) =>
+				descriptor.ext.toLowerCase() === POST_EXTENSION,
 		);
 
-	return posts.map(([whole_path, descr]: [string, ParsedPath]) => whole_path);
+	const paths_to_posts = posts.map(
+		([whole_path, _]: [string, ParsedPath]) => whole_path,
+	);
+	return paths_to_posts;
 }
