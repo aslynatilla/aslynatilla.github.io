@@ -17,8 +17,9 @@ import TitleContainer from "@/app/components/TitleContainer";
 import FirstLevelHeader from "@/app/components/FirstLevelHeader";
 import RemarkOnHeader from "@/app/components/RemarkOnHeader";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
+// export const dynamic = "force-static";
+// export const dynamic = "force-static";
+// export const dynamicParams = false;
 
 type PostStaticParams = {
 	post_date: string;
@@ -27,25 +28,21 @@ type PostStaticParams = {
 
 export async function generateStaticParams() {
 	const posts = get_posts();
+	const results: PostStaticParams[] = [];
 
-	const results = await Promise.allSettled(
-		posts
-			.map((post): string => {
-				return readFileSync(post, "utf8");
-			})
-			.map(async (file: string): Promise<PostStaticParams> => {
-				const { content, frontmatter } = await compileMDX<PostFrontmatter>({
-					source: file,
-					options: { parseFrontmatter: true },
-				});
+	for (const post of posts) {
+		const file = readFileSync(post);
+		const { content, frontmatter } = await compileMDX<PostFrontmatter>({
+			source: file,
+			options: { parseFrontmatter: true },
+		});
 
-				return {
-					post_date: frontmatter.date,
-					post_title: frontmatter.repo_folder,
-				};
-			}),
-	);
-
+		const compiled_post = {
+			post_date: frontmatter.date,
+			post_title: frontmatter.repo_folder,
+		};
+		results.push(compiled_post);
+	}
 	return results.map((result) => result);
 }
 

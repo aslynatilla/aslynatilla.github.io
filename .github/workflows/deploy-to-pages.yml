@@ -6,7 +6,7 @@ on:
       main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -26,9 +26,9 @@ jobs:
         uses: ./.github/workflows/setup-node
 
       - name: Setup Github Pages
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: next
+        uses: actions/configure-pages@v5
+        # with:
+        #   static_site_generator: next
 
       - name: Build with Next.js
         run: npx next build
