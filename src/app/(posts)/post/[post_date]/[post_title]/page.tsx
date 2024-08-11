@@ -18,6 +18,7 @@ import FirstLevelHeader from "@/app/components/FirstLevelHeader";
 import RemarkOnHeader from "@/app/components/RemarkOnHeader";
 
 // export const dynamic = "force-static";
+// export const dynamic = "force-static";
 // export const dynamicParams = false;
 
 type PostStaticParams = {
@@ -25,30 +26,24 @@ type PostStaticParams = {
 	post_title: string;
 };
 
-// export async function generateStaticParams() {
-export function generateStaticParams() {
-	// const posts = get_posts();
+export async function generateStaticParams() {
+	const posts = get_posts();
+	const results: PostStaticParams[] = [];
 
-	// const results = await Promise.allSettled(
-	// 	posts
-	// 		.map((post): string => {
-	// 			return readFileSync(post, "utf8");
-	// 		})
-	// 		.map(async (file: string): Promise<PostStaticParams> => {
-	// 			const { content, frontmatter } = await compileMDX<PostFrontmatter>({
-	// 				source: file,
-	// 				options: { parseFrontmatter: true },
-	// 			});
+	for (const post of posts) {
+		const file = readFileSync(post);
+		const { content, frontmatter } = await compileMDX<PostFrontmatter>({
+			source: file,
+			options: { parseFrontmatter: true },
+		});
 
-	// 			return {
-	// 				post_date: frontmatter.date,
-	// 				post_title: frontmatter.repo_folder,
-	// 			};
-	// 		}),
-	// );
-
-	// return results.map((result) => result);
-	return [{ post_date: "2021-01-25", post_title: "learning-cpp" }];
+		const compiled_post = {
+			post_date: frontmatter.date,
+			post_title: frontmatter.repo_folder,
+		};
+		results.push(compiled_post);
+	}
+	return results.map((result) => result);
 }
 
 export default async function Page({
