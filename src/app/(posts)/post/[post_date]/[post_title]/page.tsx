@@ -3,11 +3,7 @@ import { PostFrontmatter } from "@/model/post";
 
 import { readFileSync } from "fs";
 
-import {
-	MDXRemote,
-	MDXRemoteSerializeResult,
-	compileMDX,
-} from "next-mdx-remote/rsc";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 import { join } from "path";
 
