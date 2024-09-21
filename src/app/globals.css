@@ -11,13 +11,12 @@
   --header-bottom-border: #434343;
 }
 
-@media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: #2a2a29;
     --background-end-rgb: #1c1c1c;
   }
-}
+
 
 body {
   color: rgb(var(--foreground-rgb));
