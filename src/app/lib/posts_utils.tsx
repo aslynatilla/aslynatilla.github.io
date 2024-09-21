@@ -1,6 +1,5 @@
 import { PostComponentsMap } from "@/app/lib/types/posts_utils";
 import { Paragraph } from "@/app/components/styled_for_posts/paragraph";
-import TextParagraph from "../components/text_paragraph";
 
 export const POST_PREVIEW_PER_PAGE = 3;
 
